@@ -14,7 +14,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def hello():
-    return 'Gửi Email'
+    return render_template('index.html', title='Docker Python', name='James')
 
 @app.route('/send_email', methods=['GET','POST'])
 def send_email():

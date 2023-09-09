@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Gửi Email</title>
+</head>
+<body>
+    <h1>Gửi Email</h1>
+    <form method="POST" action="/send_email" enctype="multipart/form-data">
+        <label for="email">Email:</label>
+        <input type="text" id="email" name="email" required><br><br>
+        
+        <label for="password">Mật khẩu:</label>
+        <input type="password" id="password" name="password" required><br><br>
+        
+        <label for="sheet_link">Google Sheet Link:</label>
+        <input type="text" id="sheet_link" name="sheet_link" required><br><br>
+        
+        <label for="file_paths">File đính kèm (nếu có):</label>
+        <input type="file" id="file_paths" name="file_paths" multiple><br><br>
+        
+        <label for="interval">Thời gian giữa các email (giây):</label>
+        <input type="number" id="interval" name="interval"><br><br>
+        
+        <input type="submit" value="Gửi">
+    </form>
+</body>
+</html>

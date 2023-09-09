@@ -14,7 +14,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def hello():
-    return render_template('index.html', title='Docker Python', name='James')
+    return render_template('index.html')
 
 @app.route('/send_email', methods=['GET','POST'])
 def send_email():
@@ -55,12 +55,14 @@ def send_email():
 
             for recipient in email_to:
                 msg = MIMEMultipart()
-                if file_paths:
+                if file_paths and isinstance(file_paths, str):
                     for file_path in file_paths.split(', '):
-                        with open(file_path, 'rb') as f:
-                            attachment = MIMEApplication(f.read(), _subtype='octet-stream')
-                            attachment.add_header('Content-Disposition', 'attachment', filename=os.path.basename(file_path))
-                            msg.attach(attachment)
+                        if os.path.isfile(file_path):
+                            with open(file_path, 'rb') as f:
+                                attachment = MIMEApplication(f.read(), _subtype='octet-stream')
+                                attachment.add_header('Content-Disposition', 'attachment', filename=os.path.basename(file_path))
+                                msg.attach(attachment)
+
                 msg.attach(MIMEText(email_message, 'html'))
 
                 msg['To'] = eut.formataddr((row['Name'], recipient))

@@ -2,26 +2,70 @@
 <html>
 <head>
     <title>Gửi Email</title>
+    <style>
+        body {
+            background-color: #f0f0f0;
+            /* text-align: center; */
+            width: 500px;
+            height: 100%;
+            margin: 0 auto;
+            border: 1px solid black;
+        }
+
+        .title {
+            margin-top: 10px;
+            font-size: 20px;
+            margin-left: 10px;
+            font-weight: 500;
+            background: white;
+            margin: 0;
+            padding: 9px;
+        }
+        .emailContent {
+            display: grid;
+            padding-left: 20px;
+        }
+        input {
+            width: 80%;
+            margin: 0 auto;
+        }
+        .formEmail {
+            padding-top: 20px;
+        }
+        .submitButton {
+            margin-left: 57px;
+            margin-bottom: 30px;
+        }
+    </style>
 </head>
 <body>
-    <h1>Gửi Email</h1>
-    <form method="POST" action="/send_email" enctype="multipart/form-data">
-        <label for="email">Email:</label>
-        <input type="text" id="email" name="email" required><br><br>
+    <h1 class="title">Auto send email</h1>
+    <form class="formEmail" method="POST" action="/send_email" enctype="multipart/form-data">
+        <div class="emailContent">
+            <label for="email">Email:</label>
+            <input type="text" id="email" name="email" required><br><br>
+        </div>
         
-        <label for="password">Mật khẩu:</label>
-        <input type="password" id="password" name="password" required><br><br>
+        <div class="emailContent">
+            <label for="password">Mật khẩu:</label>
+            <input type="password" id="password" name="password" required><br><br>
+        </div>
+        <div class="emailContent">
+            <label for="sheet_link">Google Sheet Link:</label>
+            <input type="text" id="sheet_link" name="sheet_link" required><br><br>
+        </div>
         
-        <label for="sheet_link">Google Sheet Link:</label>
-        <input type="text" id="sheet_link" name="sheet_link" required><br><br>
+        <div class="emailContent">
+            <label for="file_paths">File đính kèm (nếu có):</label>
+            <input type="file" id="file_paths" name="file_paths" multiple><br><br>
+        </div>
         
-        <label for="file_paths">File đính kèm (nếu có):</label>
-        <input type="file" id="file_paths" name="file_paths" multiple><br><br>
+        <div class="emailContent">
+            <label for="interval">Thời gian giữa các email (giây):</label>
+            <input type="number" id="interval" name="interval"><br><br>
+        </div>
         
-        <label for="interval">Thời gian giữa các email (giây):</label>
-        <input type="number" id="interval" name="interval"><br><br>
-        
-        <input type="submit" value="Gửi">
+        <input class="submitButton" type="submit" value="Gửi">
     </form>
 </body>
 </html>

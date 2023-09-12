@@ -154,11 +154,14 @@ import schedule
 import threading
 from werkzeug.utils import secure_filename
 import pytz
+from datetime import datetime
 
 
 app = Flask(__name__)
-timezone = pytz.timezone("Asia/Ho_Chi_Minh") 
-os.environ["TZ"] = timezone.zone
+timezone = pytz.timezone("Asia/Ho_Chi_Minh")
+
+# Lấy thời gian hiện tại với mã múi giờ đã đặt
+current_time = datetime.now(timezone)
 
 app.secret_key = 'trinh2001'
 

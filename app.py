@@ -153,8 +153,12 @@ import re
 import schedule
 import threading
 from werkzeug.utils import secure_filename
+import pytz
+
 
 app = Flask(__name__)
+timezone = pytz.timezone("Asia/Ho_Chi_Minh") 
+os.environ["TZ"] = timezone.zone
 
 app.secret_key = 'trinh2001'
 
@@ -162,6 +166,8 @@ app.secret_key = 'trinh2001'
 # Các biến toàn cục để lưu trữ thời gian được lên lịch
 scheduled_time = None
 scheduled_job = None
+
+
 
 UPLOAD_FOLDER = 'uploads'  # Thư mục tạm thời để lưu trữ tệp tải lên
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
@@ -278,9 +284,9 @@ def run_schedule():
         schedule.run_pending()
         time.sleep(1)
 
-@app.route("/setime")
-def index():
-    return render_template("main.html")
+# @app.route("/setime")
+# def index():
+#     return render_template("main.html")
 
 @app.route("/another_action", methods=["POST"])
 def schedule_email():

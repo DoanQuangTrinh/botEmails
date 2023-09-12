@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schedule Email</title>
+</head>
+<body>
+    <h1>Schedule Email</h1>
+
+    <form action="/schedule" method="post">
+        <label for="schedule_time">Enter Time (HH:MM):</label>
+        <input type="text" id="schedule_time" name="schedule_time" required>
+        
+        <label for="email">Email:</label>
+        <input type="text" id="email" name="email" required>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+
+        <label for="sheet_link">Google Sheet Link:</label>
+        <input type="text" id="sheet_link" name="sheet_link" required>
+
+        <label for="interval">Interval (seconds):</label>
+        <input type="number" id="interval" name="interval" min="0" required>
+
+        <button type="submit">Schedule Email</button>
+    </form>
+</body>
+</html>

@@ -282,12 +282,12 @@ def run_schedule():
 def index():
     return render_template("main.html")
 
-@app.route("/schedule", methods=["POST"])
+@app.route("/another_action", methods=["POST"])
 def schedule_email():
     email = request.form.get("email")
     password = request.form.get("password")
     sheet_link = request.form.get("sheet_link")
-    interval = int(request.form.get("interval"))
+    interval = int(request.form.get("interval")) if request.form.get("interval") else 0
     scheduled_time = request.form.get("schedule_time")
     
     # if scheduled_job:

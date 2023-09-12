@@ -33,17 +33,24 @@
             padding-top: 20px;
         }
         .submitButton {
+            width: 81%;
+            margin-top: 38px;
             margin-left: 57px;
             margin-bottom: 30px;
         }
         .buttonSet{
-            padding: 151px;
+            /* padding-top: 0; */
+            padding: 0 151px 151px  151px;
+        }
+        .submitButtons{
+            margin-left: 140px;
+            margin-bottom: 22px;
         }
     </style>
 </head>
 <body>
     <h1 class="title">Auto send email</h1>
-    <form class="formEmail" method="POST" action="/send_email" enctype="multipart/form-data">
+    <form id="emailForm" class="formEmail" method="POST" action="/send_email" enctype="multipart/form-data">
         <div class="emailContent">
             <label for="email">Email:</label>
             <input type="text" id="email" name="email" required><br><br>
@@ -62,14 +69,35 @@
             <label for="file_paths">File đính kèm (nếu có):</label>
             <input type="file" id="file_paths" name="file_paths" multiple><br><br>
         </div>
-        
         <div class="emailContent">
-            <label for="interval">Thời gian giữa các email (giây):</label>
-            <input type="number" id="interval" name="interval"><br><br>
+            <label for="interval">Interval (seconds):</label>
+            <input type="number" id="interval" name="interval" min="0">
         </div>
         
+        <!-- <div class="emailContent">
+            <label for="interval">Thời gian giữa các email (giây):</label>
+            <input type="number" id="interval" name="interval"><br><br>
+        </div> -->
+        
         <input class="submitButton" type="submit" value="Gửi">
+        <div class="emailContent">
+            <label for="schedule_time">Enter Time (Hour : Minute):</label>
+            <input type="text" id="schedule_time" name="schedule_time">
+        </div>
+        <!-- <div>
+            <label for="interval">Interval (seconds):</label>
+            <input type="number" id="interval" name="interval" min="0">
+        </div> -->
+        <button class="submitButtons" type="button" onclick="myFunction()">Setup thời gian tự động mỗi ngày</button>
     </form>
-    <a class="buttonSet" href="/setime">Đi đến trang setup thời gian</a>
+    <!-- <a class="buttonSet" href="/setime">Đi đến trang setup thời gian</a> -->
+
+    <script>
+        function myFunction() {
+            var form = document.getElementById("emailForm");
+            form.action = "/another_action";
+            form.submit();
+        }
+    </script>
 </body>
 </html>
